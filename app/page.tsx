@@ -4,7 +4,13 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="relative h-[100vh] overflow-hidden">
+      <Image
+        src={"/background.jpg"}
+        alt="background-image"
+        quality={100}
+        layout="fill"
+      />
       <Counter />
       <Footer />
     </main>
