@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Counter from "./components/Counter";
-import Footer from "./components/Footer";
+import TaskBar from "./components/TaskBar";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
         layout="fill"
       />
       <Counter />
-      <Footer />
+      <TaskBar />
     </main>
   );
 }
