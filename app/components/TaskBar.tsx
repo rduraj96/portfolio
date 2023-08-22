@@ -46,7 +46,7 @@ const TaskBar = (props: Props) => {
           className={`cursor-pointer`}
         />
       </div>
-      <div className="absolute flex items-center justify-center right-0 bottom-0 h-full w-fit px-2.5 space-x-2 bg-blue-400">
+      <div className="absolute flex items-center justify-center right-0 bottom-0 h-full w-fit px-2.5 space-x-2 bg-[#0d9aef]">
         <div className="flex gap-1">
           <Image
             src={"/windowsIcons/volume.png"}
