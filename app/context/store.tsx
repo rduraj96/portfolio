@@ -8,17 +8,13 @@ import {
   useState,
 } from "react";
 
-type ProgramType = {
-  name: string;
-  isOpen: boolean;
-  isMinimized: boolean;
-  isMaximized: boolean;
-  isFocused: boolean;
-};
-
 interface ContextProps {
-  winamp: ProgramType;
-  setWinamp: Dispatch<SetStateAction<ProgramType>>;
+  winamp: Program;
+  setWinamp: Dispatch<SetStateAction<Program>>;
+  intExplorer: Program;
+  setIntExplorer: Dispatch<SetStateAction<Program>>;
+  msn: Program;
+  setMsn: Dispatch<SetStateAction<Program>>;
 }
 
 const GlobalContext = createContext<ContextProps>({
@@ -30,6 +26,22 @@ const GlobalContext = createContext<ContextProps>({
     isFocused: false,
   },
   setWinamp: () => {},
+  intExplorer: {
+    name: "ie",
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    isFocused: false,
+  },
+  setIntExplorer: () => {},
+  msn: {
+    name: "msn",
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    isFocused: false,
+  },
+  setMsn: () => {},
 });
 
 export const GlobalContextProvider = ({
@@ -37,8 +49,22 @@ export const GlobalContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [winamp, setWinamp] = useState<ProgramType>({
+  const [winamp, setWinamp] = useState<Program>({
     name: "winamp",
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    isFocused: false,
+  });
+  const [intExplorer, setIntExplorer] = useState<Program>({
+    name: "ie",
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    isFocused: false,
+  });
+  const [msn, setMsn] = useState<Program>({
+    name: "msn",
     isOpen: false,
     isMinimized: false,
     isMaximized: false,
@@ -46,7 +72,9 @@ export const GlobalContextProvider = ({
   });
 
   return (
-    <GlobalContext.Provider value={{ winamp, setWinamp }}>
+    <GlobalContext.Provider
+      value={{ winamp, setWinamp, intExplorer, setIntExplorer, msn, setMsn }}
+    >
       {children}
     </GlobalContext.Provider>
   );
