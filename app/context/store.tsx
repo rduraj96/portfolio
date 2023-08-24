@@ -19,15 +19,17 @@ interface ContextProps {
 
 const GlobalContext = createContext<ContextProps>({
   winamp: {
-    name: "winamp",
-    isOpen: false,
+    id: "wp",
+    name: "Winamp",
+    isOpen: true,
     isMinimized: false,
     isMaximized: false,
     isFocused: false,
   },
   setWinamp: () => {},
   intExplorer: {
-    name: "ie",
+    id: "ie",
+    name: "Internet Explorer",
     isOpen: false,
     isMinimized: false,
     isMaximized: false,
@@ -35,7 +37,8 @@ const GlobalContext = createContext<ContextProps>({
   },
   setIntExplorer: () => {},
   msn: {
-    name: "msn",
+    id: "msn",
+    name: "Messenger",
     isOpen: false,
     isMinimized: false,
     isMaximized: false,
@@ -50,21 +53,24 @@ export const GlobalContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [winamp, setWinamp] = useState<Program>({
-    name: "winamp",
+    id: "wp",
+    name: "Winamp",
     isOpen: false,
     isMinimized: false,
     isMaximized: false,
     isFocused: false,
   });
   const [intExplorer, setIntExplorer] = useState<Program>({
-    name: "ie",
+    id: "ie",
+    name: "Internet Explorer",
     isOpen: false,
     isMinimized: false,
     isMaximized: false,
     isFocused: false,
   });
   const [msn, setMsn] = useState<Program>({
-    name: "msn",
+    id: "msn",
+    name: "Messenger",
     isOpen: false,
     isMinimized: false,
     isMaximized: false,

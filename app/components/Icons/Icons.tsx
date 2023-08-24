@@ -14,23 +14,12 @@ const Icons = (props: Props) => {
   return (
     <div className="flex flex-col gap-6">
       <IconContainer
-        name="Internet Explorer"
         idx={1}
         program={intExplorer}
         setProgram={setIntExplorer}
       />
-      <IconContainer
-        name="Winamp"
-        idx={2}
-        program={winamp}
-        setProgram={setWinamp}
-      />
-      <IconContainer
-        name="Messenger"
-        idx={3}
-        program={msn}
-        setProgram={setMsn}
-      />
+      <IconContainer idx={2} program={winamp} setProgram={setWinamp} />
+      <IconContainer idx={3} program={msn} setProgram={setMsn} />
     </div>
   );
 };
