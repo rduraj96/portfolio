@@ -3,13 +3,15 @@
 import { useGlobalContext } from "@/app/context/store";
 import React, { useEffect, useRef, useState } from "react";
 import Webamp from "webamp";
+import { closeProgram, minimizeProgram } from "../../helpers";
 
 type Props = {};
 
 const Winamp = (props: Props) => {
   const ref = useRef(null);
   const webamp = useRef<Webamp | null>(null);
-  const { winamp, setWinamp } = useGlobalContext();
+  const { winamp, setWinamp, runningTasks, setRunningTasks } =
+    useGlobalContext();
 
   useEffect(() => {
     const target = ref.current;
@@ -20,7 +22,7 @@ const Winamp = (props: Props) => {
     webamp.current.renderWhenReady(target);
     return () => {
       if (webamp.current) {
-        webamp.current.dispose();
+        // webamp.current.dispose();
         webamp.current = null;
       }
     };
@@ -29,16 +31,11 @@ const Winamp = (props: Props) => {
   useEffect(() => {
     if (webamp.current) {
       webamp.current.onClose(() => {
-        setWinamp((prevState) => ({
-          ...prevState,
-          isOpen: false,
-        }));
+        closeProgram(winamp, setWinamp);
+        setRunningTasks(runningTasks.filter((task) => task.id !== winamp.id));
       });
       webamp.current.onMinimize(() => {
-        setWinamp((prevState) => ({
-          ...prevState,
-          isMinimized: true,
-        }));
+        minimizeProgram(winamp, runningTasks, setRunningTasks);
       });
     }
   });
@@ -48,12 +45,9 @@ const Winamp = (props: Props) => {
   }
 
   return (
-    winamp.isOpen === true && (
-      <div
-        // style={{ position: "fixed", left: 0, top: 0, right: 0, bottom: 0 }}
-        ref={ref}
-      />
-    )
+    winamp.isOpen === true &&
+    runningTasks.find((task) => task.id === winamp.id)?.isMinimized ===
+      false && <div ref={ref} />
   );
 };
 

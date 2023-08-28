@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Counter from "./components/Counter";
-import TaskBar from "./components/TaskBar";
+import TaskBar from "./components/Footer/TaskBar";
 import Icons from "./components/Icons/Icons";
 import Winamp from "./components/Programs/Winamp/Winamp";
+import Paint from "./components/Programs/Paint/Paint";
 
 export default function Home() {
   return (
@@ -18,7 +19,8 @@ export default function Home() {
         <Icons />
       </div>
       <Winamp />
-      {/* <Counter /> */}
+      <Paint />
+      <Counter />
       <TaskBar />
     </main>
   );

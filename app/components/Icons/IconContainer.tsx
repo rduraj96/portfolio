@@ -1,23 +1,26 @@
 import React, { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
+import { useGlobalContext } from "@/app/context/store";
 
 type Props = {
-  idx: number;
   program: Program;
   setProgram: Dispatch<SetStateAction<Program>>;
 };
 
-const IconContainer = ({ idx, program, setProgram }: Props) => {
+const IconContainer = ({ program, setProgram }: Props) => {
+  const { runningTasks, setRunningTasks } = useGlobalContext();
+
   return (
     <div
       className="group w-20 space-y-2"
-      tabIndex={idx}
+      tabIndex={-1}
       onDoubleClick={() => {
         if (program.isOpen === false) {
           setProgram((prevState) => ({
             ...prevState,
             isOpen: !prevState.isOpen,
           }));
+          setRunningTasks([...runningTasks, program]);
         }
       }}
     >

@@ -8,18 +8,23 @@ import IconContainer from "./IconContainer";
 type Props = {};
 
 const Icons = (props: Props) => {
-  const { winamp, setWinamp, intExplorer, setIntExplorer, msn, setMsn } =
-    useGlobalContext();
+  const {
+    winamp,
+    setWinamp,
+    intExplorer,
+    setIntExplorer,
+    msn,
+    setMsn,
+    paint,
+    setPaint,
+  } = useGlobalContext();
 
   return (
     <div className="flex flex-col gap-6">
-      <IconContainer
-        idx={1}
-        program={intExplorer}
-        setProgram={setIntExplorer}
-      />
-      <IconContainer idx={2} program={winamp} setProgram={setWinamp} />
-      <IconContainer idx={3} program={msn} setProgram={setMsn} />
+      <IconContainer program={intExplorer} setProgram={setIntExplorer} />
+      <IconContainer program={winamp} setProgram={setWinamp} />
+      <IconContainer program={msn} setProgram={setMsn} />
+      <IconContainer program={paint} setProgram={setPaint} />
     </div>
   );
 };

@@ -9,19 +9,29 @@ import {
 } from "react";
 
 interface ContextProps {
+  maxIndex: number;
+  setMaxIndex: Dispatch<SetStateAction<number>>;
+  runningTasks: Program[];
+  setRunningTasks: Dispatch<SetStateAction<Program[]>>;
   winamp: Program;
   setWinamp: Dispatch<SetStateAction<Program>>;
   intExplorer: Program;
   setIntExplorer: Dispatch<SetStateAction<Program>>;
   msn: Program;
   setMsn: Dispatch<SetStateAction<Program>>;
+  paint: Program;
+  setPaint: Dispatch<SetStateAction<Program>>;
 }
 
 const GlobalContext = createContext<ContextProps>({
+  maxIndex: 0,
+  setMaxIndex: () => {},
+  runningTasks: [],
+  setRunningTasks: () => {},
   winamp: {
     id: "wp",
     name: "Winamp",
-    isOpen: true,
+    isOpen: false,
     isMinimized: false,
     isMaximized: false,
     isFocused: false,
@@ -45,6 +55,15 @@ const GlobalContext = createContext<ContextProps>({
     isFocused: false,
   },
   setMsn: () => {},
+  paint: {
+    id: "paint",
+    name: "Paint",
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    isFocused: false,
+  },
+  setPaint: () => {},
 });
 
 export const GlobalContextProvider = ({
@@ -52,6 +71,8 @@ export const GlobalContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const [maxIndex, setMaxIndex] = useState<number>(0);
+  const [runningTasks, setRunningTasks] = useState<Program[]>([]);
   const [winamp, setWinamp] = useState<Program>({
     id: "wp",
     name: "Winamp",
@@ -76,10 +97,31 @@ export const GlobalContextProvider = ({
     isMaximized: false,
     isFocused: false,
   });
+  const [paint, setPaint] = useState<Program>({
+    id: "paint",
+    name: "Paint",
+    isOpen: false,
+    isMinimized: false,
+    isMaximized: false,
+    isFocused: false,
+  });
 
   return (
     <GlobalContext.Provider
-      value={{ winamp, setWinamp, intExplorer, setIntExplorer, msn, setMsn }}
+      value={{
+        maxIndex,
+        setMaxIndex,
+        runningTasks,
+        setRunningTasks,
+        winamp,
+        setWinamp,
+        intExplorer,
+        setIntExplorer,
+        msn,
+        setMsn,
+        paint,
+        setPaint,
+      }}
     >
       {children}
     </GlobalContext.Provider>
