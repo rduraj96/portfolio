@@ -2,7 +2,7 @@
 
 import { useGlobalContext } from "@/app/context/store";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import "xp.css/dist/XP.css";
 import TaskbarItem from "./TaskbarItem";
 
@@ -28,7 +28,25 @@ const getTime = () => {
 
 const TaskBar = (props: Props) => {
   const [time, setTime] = useState(getTime);
-  const { runningTasks, setRunningTasks } = useGlobalContext();
+  const { winamp, setWinamp, paint, setPaint, msn, setMsn } =
+    useGlobalContext();
+  let programList: {
+    stateVar: Program;
+    stateSet: Dispatch<SetStateAction<Program>>;
+  }[] = [
+    {
+      stateVar: winamp,
+      stateSet: setWinamp,
+    },
+    {
+      stateVar: paint,
+      stateSet: setPaint,
+    },
+    {
+      stateVar: msn,
+      stateSet: setMsn,
+    },
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -75,8 +93,16 @@ const TaskBar = (props: Props) => {
         />
       </div>
       <div className="ml-[100px] py-1 h-full flex justify-start items-center">
-        {runningTasks.length !== 0 &&
-          runningTasks.map((task, i) => <TaskbarItem program={task} key={i} />)}
+        {programList.map(
+          (program, i) =>
+            program.stateVar.isOpen && (
+              <TaskbarItem
+                program={program.stateVar}
+                setProgram={program.stateSet}
+                key={i}
+              />
+            )
+        )}
       </div>
       <div
         className="absolute flex items-center justify-center right-0 bottom-0 h-full w-fit px-2.5 space-x-2 bg-[#0d9aef] border-l-[1px] border-[#1042af]"
