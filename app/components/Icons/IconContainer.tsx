@@ -8,8 +8,6 @@ type Props = {
 };
 
 const IconContainer = ({ program, setProgram }: Props) => {
-  const { runningTasks, setRunningTasks } = useGlobalContext();
-
   return (
     <div
       className="group w-20 space-y-2"
@@ -20,7 +18,6 @@ const IconContainer = ({ program, setProgram }: Props) => {
             ...prevState,
             isOpen: !prevState.isOpen,
           }));
-          setRunningTasks([...runningTasks, program]);
         }
       }}
     >

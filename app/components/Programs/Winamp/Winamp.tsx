@@ -3,15 +3,14 @@
 import { useGlobalContext } from "@/app/context/store";
 import React, { useEffect, useRef, useState } from "react";
 import Webamp from "webamp";
-import { closeProgram, minimizeProgram } from "../../helpers";
+import { closeProgram, focusProgram, minimizeProgram } from "../../helpers";
 
 type Props = {};
 
 const Winamp = (props: Props) => {
   const ref = useRef(null);
   const webamp = useRef<Webamp | null>(null);
-  const { winamp, setWinamp, runningTasks, setRunningTasks } =
-    useGlobalContext();
+  const { winamp, setWinamp } = useGlobalContext();
 
   useEffect(() => {
     const target = ref.current;
@@ -22,7 +21,7 @@ const Winamp = (props: Props) => {
     webamp.current.renderWhenReady(target);
     return () => {
       if (webamp.current) {
-        // webamp.current.dispose();
+        webamp.current?.dispose();
         webamp.current = null;
       }
     };
@@ -32,10 +31,9 @@ const Winamp = (props: Props) => {
     if (webamp.current) {
       webamp.current.onClose(() => {
         closeProgram(winamp, setWinamp);
-        setRunningTasks(runningTasks.filter((task) => task.id !== winamp.id));
       });
       webamp.current.onMinimize(() => {
-        minimizeProgram(winamp, runningTasks, setRunningTasks);
+        minimizeProgram(winamp, setWinamp);
       });
     }
   });
@@ -46,8 +44,16 @@ const Winamp = (props: Props) => {
 
   return (
     winamp.isOpen === true &&
-    runningTasks.find((task) => task.id === winamp.id)?.isMinimized ===
-      false && <div ref={ref} />
+    winamp.isMinimized === false && (
+      <div
+        ref={ref}
+        onClick={() => focusProgram(setWinamp)}
+        style={{
+          position: "absolute",
+          zIndex: winamp.zIndex,
+        }}
+      />
+    )
   );
 };
 
