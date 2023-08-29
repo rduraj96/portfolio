@@ -7,6 +7,6 @@ declare global {
     isOpen: boolean;
     isMinimized: boolean;
     isMaximized: boolean;
-    isFocused: boolean;
+    zIndex: number;
   }
 }

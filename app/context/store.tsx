@@ -7,12 +7,9 @@ import {
   SetStateAction,
   useState,
 } from "react";
+import { defaultProgamState } from "./data";
 
 interface ContextProps {
-  maxIndex: number;
-  setMaxIndex: Dispatch<SetStateAction<number>>;
-  runningTasks: Program[];
-  setRunningTasks: Dispatch<SetStateAction<Program[]>>;
   winamp: Program;
   setWinamp: Dispatch<SetStateAction<Program>>;
   intExplorer: Program;
@@ -24,45 +21,13 @@ interface ContextProps {
 }
 
 const GlobalContext = createContext<ContextProps>({
-  maxIndex: 0,
-  setMaxIndex: () => {},
-  runningTasks: [],
-  setRunningTasks: () => {},
-  winamp: {
-    id: "wp",
-    name: "Winamp",
-    isOpen: false,
-    isMinimized: false,
-    isMaximized: false,
-    isFocused: false,
-  },
+  winamp: defaultProgamState.winamp,
   setWinamp: () => {},
-  intExplorer: {
-    id: "ie",
-    name: "Internet Explorer",
-    isOpen: false,
-    isMinimized: false,
-    isMaximized: false,
-    isFocused: false,
-  },
+  intExplorer: defaultProgamState.intExplorer,
   setIntExplorer: () => {},
-  msn: {
-    id: "msn",
-    name: "Messenger",
-    isOpen: false,
-    isMinimized: false,
-    isMaximized: false,
-    isFocused: false,
-  },
+  msn: defaultProgamState.msn,
   setMsn: () => {},
-  paint: {
-    id: "paint",
-    name: "Paint",
-    isOpen: false,
-    isMinimized: false,
-    isMaximized: false,
-    isFocused: false,
-  },
+  paint: defaultProgamState.paint,
   setPaint: () => {},
 });
 
@@ -71,48 +36,16 @@ export const GlobalContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [maxIndex, setMaxIndex] = useState<number>(0);
-  const [runningTasks, setRunningTasks] = useState<Program[]>([]);
-  const [winamp, setWinamp] = useState<Program>({
-    id: "wp",
-    name: "Winamp",
-    isOpen: false,
-    isMinimized: false,
-    isMaximized: false,
-    isFocused: false,
-  });
-  const [intExplorer, setIntExplorer] = useState<Program>({
-    id: "ie",
-    name: "Internet Explorer",
-    isOpen: false,
-    isMinimized: false,
-    isMaximized: false,
-    isFocused: false,
-  });
-  const [msn, setMsn] = useState<Program>({
-    id: "msn",
-    name: "Messenger",
-    isOpen: false,
-    isMinimized: false,
-    isMaximized: false,
-    isFocused: false,
-  });
-  const [paint, setPaint] = useState<Program>({
-    id: "paint",
-    name: "Paint",
-    isOpen: false,
-    isMinimized: false,
-    isMaximized: false,
-    isFocused: false,
-  });
+  const [winamp, setWinamp] = useState<Program>(defaultProgamState.winamp);
+  const [intExplorer, setIntExplorer] = useState<Program>(
+    defaultProgamState.intExplorer
+  );
+  const [msn, setMsn] = useState<Program>(defaultProgamState.msn);
+  const [paint, setPaint] = useState<Program>(defaultProgamState.paint);
 
   return (
     <GlobalContext.Provider
       value={{
-        maxIndex,
-        setMaxIndex,
-        runningTasks,
-        setRunningTasks,
         winamp,
         setWinamp,
         intExplorer,
