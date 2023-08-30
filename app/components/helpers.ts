@@ -2,45 +2,53 @@ import { Dispatch, SetStateAction } from "react";
 
 export function openProgram(
   program: Program,
-  setProgram: Dispatch<SetStateAction<Program>>
+  setProgram: Dispatch<SetStateAction<Program>>,
+  setFocused: Dispatch<SetStateAction<string>>
 ) {
   setProgram((prevState) => ({
     ...prevState,
     isOpen: true,
+    zIndex: getMaxZIndex() + 1,
   }));
+  setFocused(program.id);
 }
 
 export function closeProgram(
   program: Program,
-  setProgram: Dispatch<SetStateAction<Program>>
+  setProgram: Dispatch<SetStateAction<Program>>,
+  setFocused: Dispatch<SetStateAction<string>>
 ) {
   setProgram((prevState) => ({
     ...prevState,
     isOpen: false,
   }));
+  setFocused("");
 }
 
 export function minimizeProgram(
   program: Program,
-  setProgram: Dispatch<SetStateAction<Program>>
+  setProgram: Dispatch<SetStateAction<Program>>,
+  setFocused: Dispatch<SetStateAction<string>>
 ) {
-  if (program.isMinimized === true) {
-    setProgram((prevState) => ({
-      ...prevState,
-      zIndex: getMaxZIndex() + 1,
-    }));
-  }
   setProgram((prevState) => ({
     ...prevState,
     isMinimized: !prevState.isMinimized,
+    zIndex: -1,
   }));
+  setFocused("");
 }
 
-export function focusProgram(setProgram: Dispatch<SetStateAction<Program>>) {
+export function focusProgram(
+  program: Program,
+  setProgram: Dispatch<SetStateAction<Program>>,
+  setFocused: Dispatch<SetStateAction<string>>
+) {
   setProgram((prevState) => ({
     ...prevState,
+    isFocused: true,
     zIndex: getMaxZIndex() + 1,
   }));
+  setFocused(program.id);
 }
 
 export function getMaxZIndex(): number {
