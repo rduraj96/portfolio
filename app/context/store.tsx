@@ -10,6 +10,8 @@ import {
 import { defaultProgamState } from "./data";
 
 interface ContextProps {
+  focused: string;
+  setFocused: Dispatch<SetStateAction<string>>;
   winamp: Program;
   setWinamp: Dispatch<SetStateAction<Program>>;
   intExplorer: Program;
@@ -21,6 +23,8 @@ interface ContextProps {
 }
 
 const GlobalContext = createContext<ContextProps>({
+  focused: "",
+  setFocused: (string) => {},
   winamp: defaultProgamState.winamp,
   setWinamp: () => {},
   intExplorer: defaultProgamState.intExplorer,
@@ -36,6 +40,7 @@ export const GlobalContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const [focused, setFocused] = useState<string>("");
   const [winamp, setWinamp] = useState<Program>(defaultProgamState.winamp);
   const [intExplorer, setIntExplorer] = useState<Program>(
     defaultProgamState.intExplorer
@@ -46,6 +51,8 @@ export const GlobalContextProvider = ({
   return (
     <GlobalContext.Provider
       value={{
+        focused,
+        setFocused,
         winamp,
         setWinamp,
         intExplorer,
