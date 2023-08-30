@@ -1,14 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import Draggable from "react-draggable";
-import {
-  closeProgram,
-  focusProgram,
-  getMaxZIndex,
-  minimizeProgram,
-} from "../../helpers";
+import React from "react";
 import { useGlobalContext } from "@/app/context/store";
 import ProgramWindow from "../../Window/ProgramWindow";
 
@@ -19,7 +11,12 @@ const Paint = (props: Props) => {
 
   return (
     <ProgramWindow program={paint} setProgram={setPaint} className="w-fit">
-      <div className="window-body w-[600px] h-[500px]">
+      <div
+        className="window-body w-[600px] h-[500px] p-0"
+        style={{
+          padding: "0px 0px 0px 0px",
+        }}
+      >
         <iframe
           src="https://jspaint.app"
           title="paint"

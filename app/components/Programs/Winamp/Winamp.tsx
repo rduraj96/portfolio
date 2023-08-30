@@ -10,7 +10,7 @@ type Props = {};
 const Winamp = (props: Props) => {
   const ref = useRef(null);
   const webamp = useRef<Webamp | null>(null);
-  const { winamp, setWinamp } = useGlobalContext();
+  const { winamp, setWinamp, focused, setFocused } = useGlobalContext();
 
   useEffect(() => {
     const target = ref.current;
@@ -30,10 +30,10 @@ const Winamp = (props: Props) => {
   useEffect(() => {
     if (webamp.current) {
       webamp.current.onClose(() => {
-        closeProgram(winamp, setWinamp);
+        closeProgram(winamp, setWinamp, setFocused);
       });
       webamp.current.onMinimize(() => {
-        minimizeProgram(winamp, setWinamp);
+        minimizeProgram(winamp, setWinamp, setFocused);
       });
     }
   });
@@ -47,7 +47,10 @@ const Winamp = (props: Props) => {
     winamp.isMinimized === false && (
       <div
         ref={ref}
-        onClick={() => focusProgram(setWinamp)}
+        onClick={() => {
+          // focusProgram(setWinamp);
+          console.log("Winamp clicked");
+        }}
         style={{
           position: "absolute",
           zIndex: winamp.zIndex,

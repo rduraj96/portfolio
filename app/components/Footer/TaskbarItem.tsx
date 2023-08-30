@@ -1,7 +1,7 @@
 import { useGlobalContext } from "@/app/context/store";
 import Image from "next/image";
 import React, { Dispatch, SetStateAction } from "react";
-import { getMaxZIndex, minimizeProgram } from "../helpers";
+import { focusProgram, getMaxZIndex, minimizeProgram } from "../helpers";
 
 type Props = {
   program: Program;
@@ -9,24 +9,37 @@ type Props = {
 };
 
 const TaskbarItem = ({ program, setProgram }: Props) => {
+  const { focused, setFocused } = useGlobalContext();
   return (
     <div
       tabIndex={-1}
-      className="w-[150px] h-full mt-0.5 px-2 rounded-sm flex flex-shrink bg-[#3c81f3] hover:bg-[#53a3ff] items-center justify-start gap-2 focus:bg-[#1e52b7] shadow-inner-neutral-200 border-[#1042af] focus:hover:bg-[#3576f3]"
+      onBlur={() => setFocused("")}
+      className="w-[150px] h-full flex flex-shrink mt-0.5 items-center justify-start gap-2 px-2 rounded-sm"
       onClick={() => {
-        if (program.zIndex === getMaxZIndex()) {
-          minimizeProgram(program, setProgram);
+        if (program.isMinimized === true) {
+          minimizeProgram(program, setProgram, setFocused);
+          focusProgram(program, setProgram, setFocused);
         } else {
-          setProgram((prevState) => ({
-            ...prevState,
-            zIndex: getMaxZIndex() + 1,
-          }));
+          if (program.id !== focused) {
+            focusProgram(program, setProgram, setFocused);
+          } else {
+            minimizeProgram(program, setProgram, setFocused);
+          }
         }
       }}
-      style={{
-        boxShadow: `inset -1px 0px rgba(0, 0, 0, 0.3),
+      style={
+        program.id === focused && program.isMinimized === false
+          ? {
+              backgroundColor: "#1e52b7",
+              boxShadow: `inset 0 0 1px 1px rgba(0, 0, 0, 0.2),
+        inset 1px 0 1px rgba(0, 0, 0, 0.7)`,
+            }
+          : {
+              backgroundColor: "#3c81f3",
+              boxShadow: `inset -1px 0px rgba(0, 0, 0, 0.3),
         inset 1px 1px 1px rgba(255, 255, 255, 0.2)`,
-      }}
+            }
+      }
     >
       <span>
         <Image

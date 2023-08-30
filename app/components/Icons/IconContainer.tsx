@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
 import { useGlobalContext } from "@/app/context/store";
+import { openProgram } from "../helpers";
 
 type Props = {
   program: Program;
@@ -8,16 +9,14 @@ type Props = {
 };
 
 const IconContainer = ({ program, setProgram }: Props) => {
+  const { focused, setFocused } = useGlobalContext();
   return (
     <div
       className="group w-20 space-y-2"
       tabIndex={-1}
       onDoubleClick={() => {
         if (program.isOpen === false) {
-          setProgram((prevState) => ({
-            ...prevState,
-            isOpen: !prevState.isOpen,
-          }));
+          openProgram(program, setProgram, setFocused);
         }
       }}
     >
