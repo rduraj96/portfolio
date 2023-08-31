@@ -27,7 +27,7 @@ const IconContainer = ({ program, setProgram }: Props) => {
           }}
         >
           <Image
-            src={`/windowsIcons/${program.id}.png`}
+            src={`/icons/${program.id}.png`}
             alt={`${program.id}-desktop-icon`}
             height={32}
             width={32}
