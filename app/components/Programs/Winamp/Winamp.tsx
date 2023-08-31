@@ -48,13 +48,14 @@ const Winamp = (props: Props) => {
       <div
         ref={ref}
         onClick={() => {
-          // focusProgram(setWinamp);
+          focusProgram(winamp, setWinamp, setFocused);
           console.log("Winamp clicked");
         }}
-        style={{
-          position: "absolute",
-          zIndex: winamp.zIndex,
-        }}
+        onBlur={() => setFocused("")}
+        // style={{
+        //   position: "absolute",
+        //   zIndex: winamp.zIndex,
+        // }}
       />
     )
   );
