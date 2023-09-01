@@ -12,7 +12,7 @@ const CircleButton = ({ name, className, width, height }: Props) => {
   return (
     <div
       className={`${className} w-[17px] h-[17px] flex items-center justify-center 
-    bg-[url(/msn/toolbar-button.png)] bg-no-repeat bg-cover`}
+    bg-[url(/msn/toolbar-button.png)] bg-no-repeat bg-cover hover:cursor-pointer`}
     >
       <Image
         src={`/msn/buttons/${name}.png`}
