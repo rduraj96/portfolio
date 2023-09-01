@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import "xp.css/dist/XP.css";
-import { useGlobalContext } from "../context/store";
-import ProgramWindow from "./Window/ProgramWindow";
+import { useGlobalContext } from "../../../context/store";
+import ProgramWindow from "../../Window/ProgramWindow";
 
 type Props = {};
 
