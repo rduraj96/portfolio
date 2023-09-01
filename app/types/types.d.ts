@@ -11,3 +11,10 @@ declare global {
     zIndex: number;
   }
 }
+
+declare global {
+  interface Message {
+    type: string;
+    text: string;
+  }
+}

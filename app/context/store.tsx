@@ -20,6 +20,8 @@ interface ContextProps {
   setMsn: Dispatch<SetStateAction<Program>>;
   paint: Program;
   setPaint: Dispatch<SetStateAction<Program>>;
+  messages: Message[];
+  setMessages: Dispatch<SetStateAction<Message[]>>;
 }
 
 const GlobalContext = createContext<ContextProps>({
@@ -33,6 +35,8 @@ const GlobalContext = createContext<ContextProps>({
   setMsn: () => {},
   paint: defaultProgamState.paint,
   setPaint: () => {},
+  messages: [],
+  setMessages: () => {},
 });
 
 export const GlobalContextProvider = ({
@@ -47,6 +51,7 @@ export const GlobalContextProvider = ({
   );
   const [msn, setMsn] = useState<Program>(defaultProgamState.msn);
   const [paint, setPaint] = useState<Program>(defaultProgamState.paint);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   return (
     <GlobalContext.Provider
@@ -61,6 +66,8 @@ export const GlobalContextProvider = ({
         setMsn,
         paint,
         setPaint,
+        messages,
+        setMessages,
       }}
     >
       {children}
