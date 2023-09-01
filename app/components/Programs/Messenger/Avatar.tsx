@@ -10,7 +10,7 @@ const Avatar = ({ image }: Props) => {
 
   useEffect(() => {
     setAvatar(image);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const randomAvatar = () => {
     let avatars = [
