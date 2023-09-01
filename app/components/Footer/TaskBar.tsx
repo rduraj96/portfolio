@@ -85,7 +85,7 @@ const TaskBar = (props: Props) => {
     >
       <div className="absolute left-0 bottom-0 hover:brightness-110">
         <Image
-          src={"/windowsIcons/start.png"}
+          src={"/icons/start.png"}
           alt="start-button"
           width={92}
           height={44}
@@ -128,19 +128,19 @@ const TaskBar = (props: Props) => {
       >
         <div className="flex gap-1">
           <Image
-            src={"/windowsIcons/volume.png"}
+            src={"/icons/volume.png"}
             alt={"volume-tray-icon"}
             width={16}
             height={16}
           />
           <Image
-            src={"/windowsIcons/usb.png"}
+            src={"/icons/usb.png"}
             alt={"usb-tray-icon"}
             width={16}
             height={16}
           />
           <Image
-            src={"/windowsIcons/firewall.png"}
+            src={"/icons/firewall.png"}
             alt={"firewall-tray-icon"}
             width={16}
             height={16}
