@@ -8,7 +8,7 @@ type Props = {};
 const MessengerToolbar = (props: Props) => {
   return (
     <div className="relative w-full h-full rounded-t-md grid grid-cols-[310px_1fr]">
-      <div className="flex justify-end items-center gap-4 bg-[url(/msn/toolbar.png)] bg-repeat bg-contain">
+      <div className="flex justify-end items-center gap-3.5 bg-[url(/msn/toolbar.png)] bg-repeat bg-contain">
         <CircleButton
           name="arrow"
           className="absolute top-1 left-1"
@@ -16,13 +16,13 @@ const MessengerToolbar = (props: Props) => {
           width={15}
         />
         <ToolbarButton image="/msn/buttons/invite.png" name="Invite" />
-        <ToolbarButton image="/msn/buttons/send.png" name="Send" />
+        <ToolbarButton image="/msn/buttons/send.png" name="Send Files" />
         <ToolbarButton image="/msn/buttons/video.png" name="Video" />
         <ToolbarButton image="/msn/buttons/voice.png" name="Voice" />
         <ToolbarButton image="/msn/buttons/activities.png" name="Activities" />
         <ToolbarButton image="/msn/buttons/games.png" name="Games" />
       </div>
-      <div className="h-full grid grid-cols-[50px_50px_37px_28px]">
+      <div className="h-full grid grid-cols-[50px_50px_37px_1fr]">
         <div className="bg-[url(/msn/toolbar-left.png)] bg-no-repeat" />
 
         <div className="bg-[url(/msn/toolbar-center.png)] bg-repeat-x h-full w-full">
