@@ -13,6 +13,7 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "msn-window-background": "url('/msn/background.png')",
       },
       textShadow: {
         sm: "0 1px 1.5px var(--tw-shadow-color)",
