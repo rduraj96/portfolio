@@ -11,13 +11,15 @@ type Props = {};
 
 const MessengerWindow = (props: Props) => {
   return (
-    <Draggable>
+    <Draggable handle="strong">
       <div
         className="relative h-[400px] w-[475px] overflow-hidden rounded-md
         bg-[#D7E4F5] bg-msn-window-background bg-bottom-[20px] bg-right bg-no-repeat bg-cover"
       >
         <div className="w-full h-full grid grid-rows-[60px_1fr_140px_24px]">
-          <MessengerToolbar />
+          <strong>
+            <MessengerToolbar />
+          </strong>
           <MessengerReceiver />
           <MessengerSender />
           <MessengerFooter />
@@ -26,7 +28,7 @@ const MessengerWindow = (props: Props) => {
           className="absolute bottom-0 left-0 h-full w-full bg-repeat-y
           bg-[url('/msn/left.png'),_url('/msn/right.png')]
           bg-[position:bottom_left,_bottom_right]
-          [clip-path:polygon(0%_14.5%,100%_5%,100%_100%,0%_100%)]
+          [clip-path:polygon(0%_11%,2%_16%,2%_97%,98%_97%,98%_4%,100%_4%,100%_100%,0_100%)]
           "
         >
           <div
