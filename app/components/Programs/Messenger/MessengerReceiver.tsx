@@ -9,7 +9,7 @@ const MessengerReceiver = (props: Props) => {
     <div className="w-full h-full flex my-1 mx-2">
       <MessengerChat />
       <div className="w-[140px] h-full flex-none">
-        <Avatar image="chess" />
+        <Avatar image="msn" />
       </div>
     </div>
   );

@@ -25,7 +25,7 @@ const InputToolbarButton = ({ image, arrow }: Props) => {
   };
   return (
     <div
-      className="flex justify-center items-center h-full group hover:cursor-pointer"
+      className="flex justify-center items-center h-full px-1 group rounded-sm hover:cursor-pointer hover:bg-[#f2f5fb] hover:bg-opacity-75 border-[1px] border-transparent hover:border-[#75889a]"
       onClick={nudgeHandler}
     >
       <Image
@@ -34,12 +34,10 @@ const InputToolbarButton = ({ image, arrow }: Props) => {
         height={0}
         width={0}
         sizes="100vh"
-        className="h-full w-auto"
+        className="h-[95%] w-auto"
       />
       {arrow === true && (
-        <div className="transform scale-y-50 scale-x-75 pl-1 group-hover:rotate-180">
-          ⯆
-        </div>
+        <div className="transform scale-y-50 scale-x-75 pl-1">⯆</div>
       )}
       {image === "voice-clip" && (
         <p className="tracking-lighter text-[10px] pl-1">Voice Clip</p>

@@ -5,7 +5,7 @@ type Props = {};
 
 const InputSelectButton = (props: Props) => {
   return (
-    <div className="w-6 h-5 flex items-center justify-center transform -translate-y-1.5 bg-white rounded-b-md border-b-[3px] border-b-[#E2C47B] border-[1px] border-[#586170] border-t-white border-t-[2px]">
+    <div className="w-6 h-5 flex items-center justify-center transform -translate-y-1.5 bg-white rounded-b-md border-b-[3px] border-b-[#E2C47B] border-[1px] border-[#75889a] border-t-white border-t-[2px]">
       <Image
         src={"/msn/input-buttons/letter.png"}
         alt="letter-input-select-button"

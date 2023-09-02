@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Draggable from "react-draggable";
 import MessengerFooter from "./MessengerFooter";
 import MessengerToolbar from "./MessengerToolbar";
@@ -10,20 +10,23 @@ import MessengerSender from "./MessengerSender";
 type Props = {};
 
 const MessengerWindow = (props: Props) => {
+  useEffect(() => {
+    const noti = new Audio("/sounds/notification.mp3");
+    noti.play();
+  }, []);
+
   return (
     <Draggable handle="strong">
       <div
-        className="relative h-[400px] w-[475px] overflow-hidden rounded-md
+        className="relative h-[500px] w-[575px] overflow-hidden rounded-md grid grid-rows-[60px_1fr_140px_24px]
         bg-[#D7E4F5] bg-msn-window-background bg-bottom-[20px] bg-right bg-no-repeat bg-cover"
       >
-        <div className="w-full h-full grid grid-rows-[60px_1fr_140px_24px]">
-          <strong>
-            <MessengerToolbar />
-          </strong>
-          <MessengerReceiver />
-          <MessengerSender />
-          <MessengerFooter />
-        </div>
+        <strong>
+          <MessengerToolbar />
+        </strong>
+        <MessengerReceiver />
+        <MessengerSender />
+        <MessengerFooter />
         <div
           className="absolute bottom-0 left-0 h-full w-full bg-repeat-y
           bg-[url('/msn/left.png'),_url('/msn/right.png')]

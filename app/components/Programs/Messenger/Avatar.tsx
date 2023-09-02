@@ -33,8 +33,8 @@ const Avatar = ({ image }: Props) => {
   };
 
   return (
-    <div className="relative h-28 w-28 flex flex-col items-center justify-center border-[1px] border-[#586170] rounded-lg">
-      <div className="relative h-24 w-24 border-[1px] border-[#586170] rounded-lg -translate-y-2">
+    <div className="relative h-28 w-28 flex flex-col items-center justify-center border-[1px] border-[#75889a] rounded-lg">
+      <div className="relative h-24 w-24 border-[1px] border-[#75889a] rounded-lg -translate-y-2">
         <Image
           src={`/msn/avatars/${avatar}.png`}
           alt={`${avatar}-avatar-picture`}
