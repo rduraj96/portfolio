@@ -1,18 +1,28 @@
 import { useGlobalContext } from "@/app/context/store";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import * as ScrollArea from "@radix-ui/react-scroll-area";
 
 type Props = {};
 
 const MessengerChat = (props: Props) => {
   const { messages } = useGlobalContext();
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   return (
-    <div className="h-full w-full flex flex-col justify-center border-[#586170] border-[1px] rounded-t-md mr-2">
-      <div className="flex-none flex items-center text-[11px] bg-[#EEF0FD] pl-2 py-1 border-[#586170] border-b-[1px] rounded-t-lg">
-        To: <strong className="px-1">Rei Duraj</strong> (durajrei@gmail.com)
+    <div className="h-full w-full flex flex-col justify-center border-[#75889a] border-[1px] rounded-t-md mr-2">
+      <div className="flex-none flex items-center text-[12px] text-[#364558] bg-gradient-to-b from-[#e5f2fb] to-[#e9f1fc] pl-2 py-1 border-[#75889a] border-b-[1px] rounded-t-lg">
+        To: <strong className="px-1">Rei Duraj</strong> {"<durajrei@gmail.com>"}
       </div>
-      <div className="bg-[#fefede] border-[1px] border-[#586170] flex m-0.5 p-0.5 gap-0.5">
+      <div className="bg-[#fefede] border-[1px] border-[#75889a] flex gap-0.5 p-0.5 m-0.5">
         <span className="h-full w-5">
           <Image
             src={"/msn/info.png"}
@@ -22,19 +32,58 @@ const MessengerChat = (props: Props) => {
             className="inline"
           />
         </span>
-        <div className="text-[11px] tracking-tighter py-0.5">
+        <div className="text-[12px] tracking-tighter py-0.5">
           Rei may not reply because his status is set to Away.
         </div>
       </div>
       <div className="flex-grow bg-white mt-1 p-1">
-        {messages &&
-          messages.map((message, i) => (
-            <div key={i}>
-              <p>----------</p>
-              <p className="font-semibold tracking-tighter">{message.text}</p>
-              <p>----------</p>
+        <ScrollArea.Root className="w-96 h-48 overflow-hidden">
+          <ScrollArea.Viewport className="w-full h-full">
+            <div className="font-semibold">
+              <p className="text-gray-500">{`Rei Duraj <durajrei@gmail.com> says:`}</p>
+              <p className="text-[13px] pl-4">
+                Message me here for any inquiries
+              </p>
             </div>
-          ))}
+            <div className="mt-1 font-semibold">
+              <p className="text-gray-500">{`Rei Duraj <durajrei@gmail.com> winks:`}</p>
+              <Image
+                src={"/msn/winks/kiss.gif"}
+                height={150}
+                width={100}
+                alt={`A little kissy kiss!`}
+                unoptimized={true}
+                className="pl-4"
+              />
+            </div>
+            {messages &&
+              messages.map((message, i) => (
+                <div key={i} className="mt-0.5">
+                  {message.type === "chat" && (
+                    <div className="font-semibold">
+                      <p className="text-gray-500">{`Visitor <visitor@domain.com> says:`}</p>
+                      <p className="text-[13px] pl-4 break-words overflow-hidden whitespace-pre-line">
+                        {message.text}
+                      </p>
+                    </div>
+                  )}
+                  {message.type === "nudge" && (
+                    <div>
+                      <p>----------</p>
+                      <p className="font-bold">{message.text}</p>
+                      <p>----------</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            <div ref={messagesEndRef} />
+          </ScrollArea.Viewport>
+          <ScrollArea.Scrollbar orientation="vertical">
+            <ScrollArea.Thumb />
+          </ScrollArea.Scrollbar>
+          <ScrollArea.Corner />
+        </ScrollArea.Root>
+
         {/* <p className="tracking-lighers px-2">
           <span className="inline-flex pr-1">
             <Image
