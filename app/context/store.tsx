@@ -22,6 +22,8 @@ interface ContextProps {
   setPaint: Dispatch<SetStateAction<Program>>;
   messages: Message[];
   setMessages: Dispatch<SetStateAction<Message[]>>;
+  playWink: Wink;
+  setPlayWink: Dispatch<SetStateAction<Wink>>;
 }
 
 const GlobalContext = createContext<ContextProps>({
@@ -37,6 +39,11 @@ const GlobalContext = createContext<ContextProps>({
   setPaint: () => {},
   messages: [],
   setMessages: () => {},
+  playWink: {
+    isPlaying: false,
+    name: "",
+  },
+  setPlayWink: () => {},
 });
 
 export const GlobalContextProvider = ({
@@ -44,6 +51,10 @@ export const GlobalContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
+  const [playWink, setPlayWink] = useState<Wink>({
+    isPlaying: false,
+    name: "",
+  });
   const [focused, setFocused] = useState<string>("");
   const [winamp, setWinamp] = useState<Program>(defaultProgamState.winamp);
   const [intExplorer, setIntExplorer] = useState<Program>(
@@ -68,6 +79,8 @@ export const GlobalContextProvider = ({
         setPaint,
         messages,
         setMessages,
+        playWink,
+        setPlayWink,
       }}
     >
       {children}

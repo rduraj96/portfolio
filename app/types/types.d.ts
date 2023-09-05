@@ -18,3 +18,10 @@ declare global {
     text: string;
   }
 }
+
+declare global {
+  interface Wink {
+    isPlaying: boolean;
+    name: string;
+  }
+}
