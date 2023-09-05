@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputToolbarButton from "./InputToolbarButton";
 import InputSelectButton from "./InputSelectButton";
 import { useGlobalContext } from "@/app/context/store";
+import Winks from "./MiniToolbar/Winks";
 
 type Props = {};
 
@@ -28,7 +29,7 @@ const MessengerInput = (props: Props) => {
         <InputToolbarButton image="letter" />
         <InputToolbarButton image="happy" arrow={true} />
         <InputToolbarButton image="voice-clip" />
-        <InputToolbarButton image="wink" arrow={true} />
+        <Winks />
         <InputToolbarButton image="mountain" arrow={true} />
         <InputToolbarButton image="gift" arrow={true} />
         <InputToolbarButton image="nudge" />
