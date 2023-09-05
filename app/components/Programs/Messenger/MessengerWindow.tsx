@@ -6,14 +6,13 @@ import MessengerFooter from "./MessengerFooter";
 import MessengerToolbar from "./MessengerToolbar";
 import MessengerReceiver from "./MessengerReceiver";
 import MessengerSender from "./MessengerSender";
+import Image from "next/image";
+import { useGlobalContext } from "@/app/context/store";
 
 type Props = {};
 
 const MessengerWindow = (props: Props) => {
-  useEffect(() => {
-    const noti = new Audio("/sounds/notification.mp3");
-    noti.play();
-  }, []);
+  const { playWink } = useGlobalContext();
 
   return (
     <Draggable handle="strong">
@@ -46,6 +45,16 @@ const MessengerWindow = (props: Props) => {
             />
           </div>
         </div>
+        {playWink.isPlaying === true && (
+          <Image
+            src={`/msn/winks/${playWink.name}.gif`}
+            alt={`${playWink.name}  wink gif`}
+            height={0}
+            width={0}
+            unoptimized={true}
+            className="pl-4 absolute h-full w-auto"
+          />
+        )}
       </div>
     </Draggable>
   );

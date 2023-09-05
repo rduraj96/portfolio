@@ -6,11 +6,26 @@ import * as ScrollArea from "@radix-ui/react-scroll-area";
 type Props = {};
 
 const MessengerChat = (props: Props) => {
-  const { messages } = useGlobalContext();
+  const { messages, playWink, setPlayWink } = useGlobalContext();
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const playWinkHandler = (name: string) => {
+    const audio = new Audio(`/sounds/${name}.mp3`);
+    setPlayWink({
+      isPlaying: true,
+      name: name,
+    });
+    audio.play();
+    audio.onended = function () {
+      setPlayWink({
+        isPlaying: false,
+        name: "name",
+      });
+    };
   };
 
   useEffect(() => {
@@ -45,17 +60,6 @@ const MessengerChat = (props: Props) => {
                 Message me here for any inquiries
               </p>
             </div>
-            <div className="mt-1 font-semibold">
-              <p className="text-gray-500">{`Rei Duraj <durajrei@gmail.com> winks:`}</p>
-              <Image
-                src={"/msn/winks/kiss.gif"}
-                height={150}
-                width={100}
-                alt={`A little kissy kiss!`}
-                unoptimized={true}
-                className="pl-4"
-              />
-            </div>
             {messages &&
               messages.map((message, i) => (
                 <div key={i} className="mt-0.5">
@@ -72,6 +76,25 @@ const MessengerChat = (props: Props) => {
                       <p>----------</p>
                       <p className="font-bold">{message.text}</p>
                       <p>----------</p>
+                    </div>
+                  )}
+                  {message.type === "wink" && (
+                    <div className="font-semibold">
+                      <p className="text-gray-500">{`Visitor <visitor@domain.com> says:`}</p>
+                      <div className="w-18 h-16 pl-4">
+                        <Image
+                          src={`/msn/winks/${message.text}.png`}
+                          alt={`${message.text} wink gif`}
+                          height={0}
+                          width={0}
+                          sizes="100vh"
+                          className="h-full w-auto"
+                        />
+                      </div>
+                      <p
+                        className="w-fit text-blue-500 underline pl-4 pt-1 hover:text-blue-800 hover:cursor-pointer"
+                        onClick={() => playWinkHandler(message.text)}
+                      >{`Play "${message.text}"`}</p>
                     </div>
                   )}
                 </div>
