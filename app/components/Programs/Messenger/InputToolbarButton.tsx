@@ -25,7 +25,7 @@ const InputToolbarButton = ({ image, arrow }: Props) => {
   };
   return (
     <div
-      className="flex justify-center items-center h-full px-1 group rounded-sm hover:cursor-pointer hover:bg-[#f2f5fb] hover:bg-opacity-75 border-[1px] border-transparent hover:border-[#75889a]"
+      className="flex justify-center items-center h-full px-1 group rounded-sm hover:cursor-pointer hover:bg-[#f2f5fb] hover:bg-opacity-75 border-[1.25px] border-transparent hover:border-[#515c73]"
       onClick={nudgeHandler}
     >
       <Image

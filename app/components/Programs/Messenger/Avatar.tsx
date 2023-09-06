@@ -33,8 +33,8 @@ const Avatar = ({ image }: Props) => {
   };
 
   return (
-    <div className="relative h-28 w-28 flex flex-col items-center justify-center border-[1px] border-[#75889a] rounded-lg">
-      <div className="relative h-24 w-24 border-[1px] border-[#75889a] rounded-lg -translate-y-2">
+    <div className="relative h-[120px] w-28 flex flex-col items-center justify-center border-[1.25px] border-[#515c73] rounded-lg shadow-inner shadow-[#c3ddf7] bg-[#e2eaed] bg-opacity-80">
+      <div className="relative h-24 w-24 border-[1.25px] border-[#515c73] rounded-lg -translate-y-2">
         <Image
           src={`/msn/avatars/${avatar}.png`}
           alt={`${avatar}-avatar-picture`}
@@ -51,7 +51,7 @@ const Avatar = ({ image }: Props) => {
             width={22}s
           /> */}
         <div
-          className="absolute -bottom-4 right-0 transform scale-y-50 hover:cursor-pointer"
+          className="absolute -bottom-5 right-0 transform scale-y-50 hover:cursor-pointer"
           onClick={randomAvatar}
         >
           ⯆
