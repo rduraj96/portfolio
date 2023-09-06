@@ -12,13 +12,15 @@ import { useGlobalContext } from "@/app/context/store";
 type Props = {};
 
 const MessengerWindow = (props: Props) => {
-  const { playWink } = useGlobalContext();
+  const { playWink, currentBackground } = useGlobalContext();
 
   return (
     <Draggable handle="strong">
       <div
-        className="relative h-[500px] w-[575px] overflow-hidden rounded-md grid grid-rows-[60px_1fr_140px_24px]
-        bg-[#D7E4F5] bg-msn-window-background bg-bottom-[20px] bg-right bg-no-repeat bg-cover"
+        className="relative h-[500px] w-[575px] overflow-hidden rounded-md grid grid-rows-[60px_1fr_140px_24px]"
+        style={{
+          background: `#D7E4F5 url('/msn/backgrounds/${currentBackground}.png') bottom 20px right/cover no-repeat`,
+        }}
       >
         <strong>
           <MessengerToolbar />
@@ -52,7 +54,7 @@ const MessengerWindow = (props: Props) => {
             height={0}
             width={0}
             unoptimized={true}
-            className="pl-4 absolute h-full w-auto"
+            className="absolute h-full w-auto left-[50%] -translate-x-[50%]"
           />
         )}
       </div>
