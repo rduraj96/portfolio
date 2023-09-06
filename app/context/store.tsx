@@ -24,6 +24,8 @@ interface ContextProps {
   setMessages: Dispatch<SetStateAction<Message[]>>;
   playWink: Wink;
   setPlayWink: Dispatch<SetStateAction<Wink>>;
+  currentBackground: string;
+  setCurrentBackground: Dispatch<SetStateAction<string>>;
 }
 
 const GlobalContext = createContext<ContextProps>({
@@ -44,6 +46,8 @@ const GlobalContext = createContext<ContextProps>({
     name: "",
   },
   setPlayWink: () => {},
+  currentBackground: "default",
+  setCurrentBackground: () => {},
 });
 
 export const GlobalContextProvider = ({
@@ -63,6 +67,7 @@ export const GlobalContextProvider = ({
   const [msn, setMsn] = useState<Program>(defaultProgamState.msn);
   const [paint, setPaint] = useState<Program>(defaultProgamState.paint);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [currentBackground, setCurrentBackground] = useState<string>("default");
 
   return (
     <GlobalContext.Provider
@@ -81,6 +86,8 @@ export const GlobalContextProvider = ({
         setMessages,
         playWink,
         setPlayWink,
+        currentBackground,
+        setCurrentBackground,
       }}
     >
       {children}
