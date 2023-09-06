@@ -21,7 +21,7 @@ const MiniToolbarItem = ({ wink }: Props) => {
 
   return (
     <div
-      className="w-16 h-16 border-[1px] border-[#c5d3ed] hover:border-[#316ac5] bg-white hover:bg-[#cad9f0]"
+      className="w-16 h-16 border-[1.25px] border-[#c5d3ed] hover:border-[#316ac5] bg-white hover:bg-[#cad9f0]"
       onClick={winkHandler}
     >
       <Image
