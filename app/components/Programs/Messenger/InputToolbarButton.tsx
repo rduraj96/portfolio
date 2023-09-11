@@ -39,7 +39,7 @@ const InputToolbarButton = ({ image, arrow }: Props) => {
       {arrow === true && (
         <div className="transform scale-y-50 scale-x-75 pl-1">⯆</div>
       )}
-      {image === "voice-clip" && (
+      {(image === "voice-clip" || image === "voice-clip-active") && (
         <p className="tracking-lighter text-[10px] pl-1">Voice Clip</p>
       )}
     </div>

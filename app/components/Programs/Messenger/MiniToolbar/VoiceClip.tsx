@@ -30,7 +30,9 @@ const VoiceClip = (props: Props) => {
       onMouseDownCapture={startRecording}
       onMouseUpCapture={stopRecording}
     >
-      <InputToolbarButton image="voice-clip" />
+      <InputToolbarButton
+        image={status === "recording" ? "voice-clip-active" : "voice-clip"}
+      />
     </div>
   );
 };
