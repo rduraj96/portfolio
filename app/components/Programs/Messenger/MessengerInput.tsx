@@ -8,6 +8,7 @@ import VoiceClip from "./MiniToolbar/VoiceClip";
 import { useReactMediaRecorder } from "react-media-recorder";
 import ProgressBar from "./MiniToolbar/ProgressBar";
 import { useTimer } from "@/app/hooks/useTimer";
+import Emoticons from "./MiniToolbar/Emoticons";
 
 type Props = {};
 
@@ -27,7 +28,7 @@ const MessengerInput = (props: Props) => {
     setText("");
   };
 
-  const handleVoiceClip = (blobUrl: string, blob: Blob) => {
+  const handleVoiceClip = (blob: Blob, aborted?: boolean) => {
     stop();
     if (blob.size > 0) {
       const newUrl = URL.createObjectURL(blob);
@@ -45,22 +46,41 @@ const MessengerInput = (props: Props) => {
     video: false,
     audio: true,
     onStart: start,
-    onStop: handleVoiceClip,
-    askPermissionOnMount: true,
+    onStop: (blobUrl: string, blob: Blob) => {
+      handleVoiceClip(blob);
+    },
   });
 
   useEffect(() => {
-    if (seconds === 15) {
+    if (seconds > 15) {
       stopRecording();
       stop();
     }
   }, [seconds]);
 
+  useEffect(() => {
+    const keyDownHandler = (event: KeyboardEvent) => {
+      console.log("User pressed: ", event.key);
+
+      if (event.key === "Escape" && status === "recording") {
+        event.preventDefault();
+        stopRecording();
+        stop();
+      }
+    };
+
+    document.addEventListener("keydown", keyDownHandler);
+
+    return () => {
+      document.removeEventListener("keydown", keyDownHandler);
+    };
+  }, [status]);
+
   return (
     <div className="flex flex-col min-h-32 mr-2 bg-white w-full rounded-md border-[1.25px] border-[#515c73] opacity-90">
       <div className="flex-none flex items-center gap-2 rounded-t-md border-b-[1px] border-[#515c73] py-0.5 px-3 bg-gradient-to-b from-[#c8d6ed] via-[#ebf2fb] to-[#c8d6ed]">
         <InputToolbarButton image="letter" />
-        <InputToolbarButton image="happy" arrow={true} />
+        <Emoticons text={text} setText={setText} />
         <VoiceClip
           status={status}
           startRecording={startRecording}
@@ -75,8 +95,8 @@ const MessengerInput = (props: Props) => {
         <div className="h-full w-full flex justify-center items-center">
           <div className="w-2/3">
             <ProgressBar progress={seconds} />
-            <p className="p-0.5">
-              {seconds > 15 ? "To cancel, keep holding and press ESC." : ""}
+            <p className="p-0.5 text-center">
+              To cancel, keep holding and press ESC.
             </p>
           </div>
         </div>

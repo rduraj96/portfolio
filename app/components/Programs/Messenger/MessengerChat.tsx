@@ -2,6 +2,8 @@ import { useGlobalContext } from "@/app/context/store";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
+import reactStringReplace from "react-string-replace";
+import { emoticons, pattern } from "../../data/emoticons";
 
 type Props = {};
 
@@ -70,8 +72,18 @@ const MessengerChat = (props: Props) => {
           <ScrollArea.Viewport className="w-full h-full">
             <div className="font-semibold">
               <p className="text-gray-500">{`Rei Duraj <durajrei@gmail.com> says:`}</p>
-              <p className="text-[13px] pl-4">
+              <p className="flex gap-1 text-[13px] pl-4">
                 Message me here for any inquiries
+                <span className="">
+                  <Image
+                    src={`http://web.archive.org/web/20140205013226im_/http://messenger.msn.com/MMM2006-04-19_17.00/Resource/emoticons/cry_smile.gif`}
+                    alt={`cry smile gif`}
+                    height={18}
+                    width={18}
+                    unoptimized={true}
+                    // className="h-full w-auto px-0.5"
+                  />
+                </span>
               </p>
             </div>
             <div className="font-semibold">
@@ -97,9 +109,24 @@ const MessengerChat = (props: Props) => {
                   {message.type === "chat" && (
                     <div className="font-semibold">
                       <p className="text-gray-500">{`Visitor <visitor@domain.com> says:`}</p>
-                      <p className="text-[13px] pl-4 break-words overflow-hidden whitespace-pre-line">
-                        {message.text}
-                      </p>
+                      <div className="gap-1 text-[13px] pl-4 break-words overflow-hidden whitespace-pre-line">
+                        {reactStringReplace(
+                          message.text,
+                          pattern,
+                          (match, i) => (
+                            <span key={i} className="inline-flex h-fit w-fit">
+                              <Image
+                                src={emoticons[match as keyof typeof emoticons]}
+                                alt={match}
+                                height={18}
+                                width={18}
+                                unoptimized={true}
+                                className="h-fit w-fit px-0.5"
+                              />
+                            </span>
+                          )
+                        )}
+                      </div>
                     </div>
                   )}
                   {message.type === "nudge" && (
