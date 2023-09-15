@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { emoticons } from "./data/emoticons";
 
 export function openProgram(
   program: Program,
@@ -58,4 +59,11 @@ export function getMaxZIndex(): number {
     ).filter((zIndex) => !Number.isNaN(zIndex)),
     0
   );
+}
+
+export function getPattern(): RegExp {
+  const escape = (s: string) => s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+  const pattern = new RegExp(Object.keys(emoticons).map(escape).join("|"), "g");
+  console.log(pattern);
+  return pattern;
 }
