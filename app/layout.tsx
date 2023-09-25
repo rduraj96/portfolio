@@ -6,7 +6,7 @@ import { GlobalContextProvider } from "./context/store";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Rei Duraj Portfolio",
+  title: "Rei Duraj's Portfolio",
   description: "Personal portfolio of Rei Duraj",
 };
 
