@@ -7,7 +7,15 @@ type Props = {
 };
 
 const BackgroundItem = ({ background }: Props) => {
-  const { currentBackground, setCurrentBackground } = useGlobalContext();
+  const { setCurrentBackground } = useGlobalContext();
+  let currentBackground = localStorage.getItem("background") || "default";
+
+  const saveToLocalStorage = () => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("background", background);
+      setCurrentBackground(background);
+    }
+  };
 
   return (
     <div
@@ -20,7 +28,7 @@ const BackgroundItem = ({ background }: Props) => {
             }
           : undefined
       }
-      onClick={() => setCurrentBackground(background)}
+      onClick={saveToLocalStorage}
     >
       <Image
         src={`/msn/backgrounds/${background}.png`}

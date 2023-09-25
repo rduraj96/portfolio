@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import MessengerFooter from "./MessengerFooter";
 import MessengerToolbar from "./MessengerToolbar";
@@ -12,7 +12,27 @@ import { useGlobalContext } from "@/app/context/store";
 type Props = {};
 
 const MessengerWindow = (props: Props) => {
-  const { playWink, currentBackground } = useGlobalContext();
+  const { playWink, currentBackground, setCurrentBackground } =
+    useGlobalContext();
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      let background = localStorage.getItem("background") || "default";
+      setCurrentBackground(background);
+    }
+  }, []);
+
+  // useEffect(() => {
+  //   function getCurrentBackground() {
+  //     window.addEventListener("storage", () => {
+  //       let background = localStorage.getItem("background") || "default";
+  //       setCurrentBackground(background);
+  //     });
+  //   }
+
+  //   return () => {
+  //     window.removeEventListener("storage", getCurrentBackground);
+  //   };
+  // }, []);
 
   return (
     <Draggable handle="strong">
