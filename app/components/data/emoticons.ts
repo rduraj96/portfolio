@@ -32,7 +32,7 @@ export const emoticons: Emotes = {
   ":$": "http://web.archive.org/web/20140204231459im_/http://messenger.msn.com/MMM2006-04-19_17.00/Resource/emoticons/red_smile.gif",
   ":@": "http://web.archive.org/web/20140204231459im_/http://messenger.msn.com/MMM2006-04-19_17.00/Resource/emoticons/angry_smile.gif",
   "(6)":
-    "http://web.archive.org/web/20140204231459im_/http://messenger.msn.com/MMM2006-04-19_17.00/Resource/emoticons/angry_smile.gif",
+    "http://web.archive.org/web/20140204231459im_/http://messenger.msn.com/MMM2006-04-19_17.00/Resource/emoticons/devil_smile.gif",
   "8o|":
     "http://web.archive.org/web/20140204231459im_/http://messenger.msn.com/MMM2006-04-19_17.00/Resource/emoticons/48_48.gif",
   "^o)":
