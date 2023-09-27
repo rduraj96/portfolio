@@ -37,6 +37,8 @@ const TaskBar = (props: Props) => {
     setMsn,
     projects,
     setProjects,
+    intExplorer,
+    setIntExplorer,
   } = useGlobalContext();
   let programList: {
     stateVar: Program;
@@ -57,6 +59,10 @@ const TaskBar = (props: Props) => {
     {
       stateVar: projects,
       stateSet: setProjects,
+    },
+    {
+      stateVar: intExplorer,
+      stateSet: setIntExplorer,
     },
   ];
 

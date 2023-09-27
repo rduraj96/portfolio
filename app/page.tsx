@@ -7,6 +7,7 @@ import Paint from "./components/Programs/Paint/Paint";
 import Messenger from "./components/Programs/Messenger/Messenger";
 import MessengerWindow from "./components/Programs/Messenger/MessengerWindow";
 import Projects from "./components/Programs/MyProjects/Projects";
+import InternetExplorer from "./components/Programs/InternetExplorer/InternetExplorer";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <Icons />
       </div>
       <Projects />
+      <InternetExplorer />
       {/* <MessengerWindow /> */}
       <Winamp />
       <Paint />
