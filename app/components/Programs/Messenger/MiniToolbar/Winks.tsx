@@ -18,31 +18,29 @@ const Winks = (props: Props) => {
           <InputToolbarButton image="wink" arrow={true} />
         </div>
       </Popover.Trigger>
-      <Popover.Portal>
-        <Popover.Content side="top" className="outline-none">
-          <div className="h-fit w-fit bg-[#eef3fa] border-[1.25px] border-[#4e699c] p-2">
-            <div className="font-bold text-[#4b74bd] mb-1">My Winks</div>
-            <div
-              className="grid grid-cols-4 grid-rows-2 gap-y-1 gap-x-2"
-              onClick={() => setOpen(false)}
-            >
-              <WinkItem wink="laughing" />
-              <WinkItem wink="knock" />
-              <WinkItem wink="smash" />
-              <WinkItem wink="kiss" />
-              <WinkItem wink="pig" />
-              <WinkItem wink="roll" />
-              <WinkItem wink="heart" />
-              <WinkItem wink="bow" />
-            </div>
-            <div className="w-full mt-1 text-end text-[#4b74bd] font-semibold">
-              more...
-            </div>
+      <Popover.Content side="top" className="outline-none">
+        <div className="h-fit w-fit bg-[#eef3fa] border-[1.25px] border-[#4e699c] p-2">
+          <div className="font-bold text-[#4b74bd] mb-1">My Winks</div>
+          <div
+            className="grid grid-cols-4 grid-rows-2 gap-y-1 gap-x-2"
+            onClick={() => setOpen(false)}
+          >
+            <WinkItem wink="laughing" />
+            <WinkItem wink="knock" />
+            <WinkItem wink="smash" />
+            <WinkItem wink="kiss" />
+            <WinkItem wink="pig" />
+            <WinkItem wink="roll" />
+            <WinkItem wink="heart" />
+            <WinkItem wink="bow" />
           </div>
-          <Popover.Close asChild />
-          {/* <Popover.Arrow /> */}
-        </Popover.Content>
-      </Popover.Portal>
+          <div className="w-full mt-1 text-end text-[#4b74bd] font-semibold">
+            more...
+          </div>
+        </div>
+        <Popover.Close asChild />
+        {/* <Popover.Arrow /> */}
+      </Popover.Content>
     </Popover.Root>
   );
 };

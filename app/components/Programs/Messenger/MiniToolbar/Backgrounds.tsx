@@ -17,28 +17,26 @@ const Backgrounds = (props: Props) => {
           <InputToolbarButton image="mountain" arrow={true} />
         </div>
       </Popover.Trigger>
-      <Popover.Portal>
-        <Popover.Content side="top" className="outline-none">
-          <div className="h-fit w-fit bg-[#eef3fa] border-[1.25px] border-[#4e699c] p-2">
-            <div className="font-bold text-[#4b74bd] mb-1">My Backgrounds</div>
-            <div
-              className="grid grid-cols-3 grid-rows-2 gap-y-1 gap-x-2"
-              onClick={() => setOpen(false)}
-            >
-              <BackgroundItem background="default" />
-              <BackgroundItem background="car" />
-              <BackgroundItem background="planets" />
-              <BackgroundItem background="lavender" />
-              <BackgroundItem background="fish" />
-            </div>
-            <div className="w-full mt-1 text-end text-[#4b74bd] font-semibold">
-              more...
-            </div>
+      <Popover.Content side="top" className="outline-none">
+        <div className="h-fit w-fit bg-[#eef3fa] border-[1.25px] border-[#4e699c] p-2">
+          <div className="font-bold text-[#4b74bd] mb-1">My Backgrounds</div>
+          <div
+            className="grid grid-cols-3 grid-rows-2 gap-y-1 gap-x-2"
+            onClick={() => setOpen(false)}
+          >
+            <BackgroundItem background="default" />
+            <BackgroundItem background="car" />
+            <BackgroundItem background="planets" />
+            <BackgroundItem background="lavender" />
+            <BackgroundItem background="fish" />
           </div>
-          <Popover.Close asChild />
-          {/* <Popover.Arrow /> */}
-        </Popover.Content>
-      </Popover.Portal>
+          <div className="w-full mt-1 text-end text-[#4b74bd] font-semibold">
+            more...
+          </div>
+        </div>
+        <Popover.Close asChild />
+        {/* <Popover.Arrow /> */}
+      </Popover.Content>
     </Popover.Root>
   );
 };
