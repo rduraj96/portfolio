@@ -12,9 +12,9 @@ const Paint = (props: Props) => {
   return (
     <ProgramWindow program={paint} setProgram={setPaint} className="w-fit">
       <div
-        className="window-body w-[600px] h-[500px] p-0"
+        className="window-body w-[600px] h-[500px]"
         style={{
-          padding: "0px 0px 0px 0px",
+          margin: "0px 3px 3px 3px",
         }}
       >
         <iframe
