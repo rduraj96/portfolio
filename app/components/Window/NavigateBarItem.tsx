@@ -13,7 +13,7 @@ type Props = {
 const NavigateBarItem = (props: Props) => {
   return (
     <div
-      className={`w-fit flex justify-center items-center gap-1 py-1 px-0.5 rounded font-semibold border-[1px] border-transparent ${
+      className={`w-fit flex justify-center items-center gap-0.5 py-1 px-[1px] rounded border-[1px] border-transparent ${
         props.disabled !== true &&
         "hover:border-[1px] hover:border-[#0000001a] hover:shadow-[0_-1px_1px_rgba(0,0,0,0.1)]"
       }`}
