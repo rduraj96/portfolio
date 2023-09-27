@@ -4,6 +4,7 @@ import { useGlobalContext } from "@/app/context/store";
 import React, { useEffect, useRef, useState } from "react";
 import Webamp from "webamp";
 import { closeProgram, focusProgram, minimizeProgram } from "../../helpers";
+import { initialTracks } from "./config";
 
 type Props = {};
 
@@ -17,7 +18,7 @@ const Winamp = (props: Props) => {
     if (!target) {
       return;
     }
-    webamp.current = new Webamp({});
+    webamp.current = new Webamp({ initialTracks });
     webamp.current.renderWhenReady(target);
     return () => {
       if (webamp.current) {
