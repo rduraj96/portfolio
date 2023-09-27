@@ -37,8 +37,8 @@ export const defaultProgamState = {
   },
   projects: {
     id: "projects",
-    name: "My Projects",
-    isOpen: true,
+    name: "Projects",
+    isOpen: false,
     isFocused: false,
     isMinimized: false,
     isMaximized: false,
