@@ -43,7 +43,7 @@ const TaskbarItem = ({ program, setProgram }: Props) => {
     >
       <span>
         <Image
-          src={`/windowsIcons/${program.id}.png`}
+          src={`/icons/${program.id}.png`}
           alt={`${program.id}-desktop-icon`}
           width={14}
           height={14}

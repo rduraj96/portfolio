@@ -17,6 +17,8 @@ const Icons = (props: Props) => {
     setMsn,
     paint,
     setPaint,
+    projects,
+    setProjects,
   } = useGlobalContext();
 
   return (
@@ -25,6 +27,7 @@ const Icons = (props: Props) => {
       <IconContainer program={winamp} setProgram={setWinamp} />
       <IconContainer program={msn} setProgram={setMsn} />
       <IconContainer program={paint} setProgram={setPaint} />
+      <IconContainer program={projects} setProgram={setProjects} />
     </div>
   );
 };

@@ -35,4 +35,13 @@ export const defaultProgamState = {
     isMaximized: false,
     zIndex: 0,
   },
+  projects: {
+    id: "projects",
+    name: "My Projects",
+    isOpen: true,
+    isFocused: false,
+    isMinimized: false,
+    isMaximized: false,
+    zIndex: 0,
+  },
 };

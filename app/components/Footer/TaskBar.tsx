@@ -28,8 +28,16 @@ const getTime = () => {
 
 const TaskBar = (props: Props) => {
   const [time, setTime] = useState(getTime);
-  const { winamp, setWinamp, paint, setPaint, msn, setMsn } =
-    useGlobalContext();
+  const {
+    winamp,
+    setWinamp,
+    paint,
+    setPaint,
+    msn,
+    setMsn,
+    projects,
+    setProjects,
+  } = useGlobalContext();
   let programList: {
     stateVar: Program;
     stateSet: Dispatch<SetStateAction<Program>>;
@@ -45,6 +53,10 @@ const TaskBar = (props: Props) => {
     {
       stateVar: msn,
       stateSet: setMsn,
+    },
+    {
+      stateVar: projects,
+      stateSet: setProjects,
     },
   ];
 

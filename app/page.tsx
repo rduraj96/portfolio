@@ -4,7 +4,9 @@ import TaskBar from "./components/Footer/TaskBar";
 import Icons from "./components/Icons/Icons";
 import Winamp from "./components/Programs/Winamp/Winamp";
 import Paint from "./components/Programs/Paint/Paint";
+import Messenger from "./components/Programs/Messenger/Messenger";
 import MessengerWindow from "./components/Programs/Messenger/MessengerWindow";
+import Projects from "./components/Programs/MyProjects/Projects";
 
 export default function Home() {
   return (
@@ -12,10 +14,11 @@ export default function Home() {
       <div className="mt-10 ml-10 w-fit">
         <Icons />
       </div>
-      <MessengerWindow />
+      <Projects />
+      {/* <MessengerWindow /> */}
       <Winamp />
       <Paint />
-      <Counter />
+      <Messenger />
       <TaskBar />
     </main>
   );
