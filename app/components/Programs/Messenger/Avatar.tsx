@@ -6,11 +6,13 @@ type Props = {
 };
 
 const Avatar = ({ image }: Props) => {
-  const [avatar, setAvatar] = useState<string>("");
+  const [avatar, setAvatar] = useState<string>("msn");
 
   useEffect(() => {
-    setAvatar(image);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    if (image) {
+      setAvatar(image);
+    }
+  }, [image]);
 
   const randomAvatar = () => {
     let avatars = [

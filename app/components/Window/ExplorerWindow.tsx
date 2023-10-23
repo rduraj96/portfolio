@@ -45,7 +45,7 @@ const ExplorerWindow = (props: Props) => {
               />
             </div>
           </div>
-          <div className="flex h-10 p-1 border-b-[1px] border-[#0000001a]">
+          <div className="flex h-10 p-0.5 border-b-[1px] border-[#0000001a]">
             <NavigateBarItem
               icon="back"
               title="Back"
@@ -86,17 +86,7 @@ const ExplorerWindow = (props: Props) => {
           <div className="w-full mx-0.5 p-0.5 h-6 flex">
             <p className="p-0.5 text-center text-[#00000080]">Address</p>
             <select className="flex-grow" disabled>
-              <option>
-                <div>
-                  <Image
-                    src={"/windowsIcons/shared.png"}
-                    alt="folder icon"
-                    height={14}
-                    width={14}
-                  />
-                  <p>C:\Desktop\My Projects</p>
-                </div>
-              </option>
+              <option>C:\Desktop\My Projects</option>
             </select>
             <div className="flex gap-1 items-center pl-1 pr-4">
               <Image

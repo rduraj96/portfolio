@@ -15,7 +15,7 @@ const NavigateBarItem = (props: Props) => {
     <div
       className={`w-fit flex justify-center items-center gap-0.5 py-1 px-[1px] rounded border-[1px] border-transparent ${
         props.disabled !== true &&
-        "hover:border-[1px] hover:border-[#0000001a] hover:shadow-[0_-1px_1px_rgba(0,0,0,0.1)]"
+        "hover:border-[1px] hover:border-[#0000001a] hover:shadow-[0_-1px_1px_rgba(0,0,0,0.1)] hover:active:bg-[#dedede] hover:active:translate-x-[1px] hover:active:translate-y-[1px] hover:active:text-[#ffffffb3]"
       }`}
       style={
         props.disabled === true
