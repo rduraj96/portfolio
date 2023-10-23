@@ -23,7 +23,7 @@ const ProgramWindow = ({ children, program, setProgram, className }: Props) => {
 
   return (
     program.isOpen === true && (
-      <Draggable handle="strong">
+      <Draggable handle="strong" positionOffset={{ x: "30%", y: "-30%" }}>
         <div
           className={`select-none window ${className}
           
