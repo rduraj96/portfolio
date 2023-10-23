@@ -140,7 +140,7 @@ const TaskBar = (props: Props) => {
           #137ed7 97%,
           #095bc9 100%
         )`,
-          boxShadow: `inset 1px 0 1px #18bbff;`,
+          boxShadow: `inset 1px 0 1px #18bbff`,
           backgroundColor: `#0b77e9`,
         }}
       >
