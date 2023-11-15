@@ -1,6 +1,11 @@
 import React from "react";
-import MessengerInput from "./MessengerInput";
+// import MessengerInput from "./MessengerInput";
 import Avatar from "./Avatar";
+import dynamic from "next/dynamic";
+
+const MessengerInput = dynamic(() => import("./MessengerInput"), {
+  ssr: false,
+});
 
 type Props = {};
 
