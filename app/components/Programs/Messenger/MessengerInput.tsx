@@ -56,7 +56,7 @@ const MessengerInput = (props: Props) => {
       stopRecording();
       stop();
     }
-  }, [seconds]);
+  }, [seconds]); //eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const keyDownHandler = (event: KeyboardEvent) => {
@@ -74,7 +74,7 @@ const MessengerInput = (props: Props) => {
     return () => {
       document.removeEventListener("keydown", keyDownHandler);
     };
-  }, [status]);
+  }, [status]); //eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="flex flex-col min-h-32 mr-2 bg-white w-full rounded-md border-[1.25px] border-[#515c73] opacity-90">

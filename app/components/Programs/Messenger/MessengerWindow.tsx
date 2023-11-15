@@ -19,20 +19,7 @@ const MessengerWindow = (props: Props) => {
       let background = localStorage.getItem("background") || "default";
       setCurrentBackground(background);
     }
-  }, []);
-
-  // useEffect(() => {
-  //   function getCurrentBackground() {
-  //     window.addEventListener("storage", () => {
-  //       let background = localStorage.getItem("background") || "default";
-  //       setCurrentBackground(background);
-  //     });
-  //   }
-
-  //   return () => {
-  //     window.removeEventListener("storage", getCurrentBackground);
-  //   };
-  // }, []);
+  }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Draggable handle="strong">
