@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Icons from "./Icons/Icons";
 import Projects from "./Programs/MyProjects/Projects";
 import InternetExplorer from "./Programs/InternetExplorer/InternetExplorer";
@@ -16,6 +16,12 @@ const Winamp = dynamic(() => import("./Programs/Winamp/Winamp"), {
 type Props = {};
 
 const WindowsXp = (props: Props) => {
+  useEffect(() => {
+    if (typeof window === undefined) {
+      return;
+    }
+  }, []);
+
   return (
     <main
       className="relative h-full overflow-hidden bg-[url('/wallpapers/background.jpg')] bg-no-repeat bg-cover"
