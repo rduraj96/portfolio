@@ -1,7 +1,9 @@
+"use client";
+
 import { useGlobalContext } from "@/app/context/store";
 import Image from "next/image";
 import React, { Dispatch, SetStateAction } from "react";
-import { focusProgram, getMaxZIndex, minimizeProgram } from "../helpers";
+import { focusProgram, minimizeProgram } from "../helpers";
 
 type Props = {
   program: Program;

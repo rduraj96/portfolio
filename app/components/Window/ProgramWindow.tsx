@@ -2,12 +2,7 @@
 
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Draggable from "react-draggable";
-import {
-  closeProgram,
-  focusProgram,
-  getMaxZIndex,
-  minimizeProgram,
-} from "../helpers";
+import { closeProgram, focusProgram, minimizeProgram } from "../helpers";
 import Image from "next/image";
 import { useGlobalContext } from "@/app/context/store";
 
