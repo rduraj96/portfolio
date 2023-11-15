@@ -20,7 +20,7 @@ export const defaultProgamState = {
   msn: {
     id: "msn",
     name: "Messenger",
-    isOpen: false,
+    isOpen: true,
     isFocused: false,
     isMinimized: false,
     isMaximized: false,
