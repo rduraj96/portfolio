@@ -31,8 +31,8 @@ const IconContainer = ({ program, setProgram }: Props) => {
           <Image
             src={`/icons/${program.id}.png`}
             alt={`${program.id}-desktop-icon`}
-            height={32}
-            width={32}
+            height={36}
+            width={36}
             className="group-focus:opacity-50"
           />
         </span>
@@ -40,7 +40,7 @@ const IconContainer = ({ program, setProgram }: Props) => {
       <div className="flex items-center justify-center text-center">
         <div
           className={
-            "text-white text-xs shadow-black text-shadow-sm font-light px-1 group-focus:bg-blue-600 whitespace-normal"
+            "text-white text-xs shadow-black text-shadow-sm px-1 group-focus:bg-blue-600 whitespace-normal"
           }
         >
           {program.name}

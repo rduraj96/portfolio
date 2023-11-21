@@ -8,12 +8,12 @@ type Props = {
 
 const SideCardItem = (props: Props) => {
   return (
-    <div className="flex gap-1 mb-0.5 hover:underline hover:text-[#2b72ff] cursor-pointer">
+    <div className="flex gap-1 mb-1 hover:underline hover:text-[#2b72ff] cursor-pointer">
       <Image
         src={`/windowsIcons/${props.icon}.png`}
         alt={`${props.icon} icon`}
-        height={14}
-        width={14}
+        height={16}
+        width={16}
       />
       {props.title}
     </div>

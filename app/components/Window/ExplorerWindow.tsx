@@ -85,8 +85,8 @@ const ExplorerWindow = (props: Props) => {
           </div>
           <div className="w-full mx-0.5 p-0.5 h-6 flex">
             <p className="p-0.5 text-center text-[#00000080]">Address</p>
-            <select className="flex-grow" disabled>
-              <option>C:\Desktop\My Projects</option>
+            <select className="flex-grow">
+              <option>Project Panel</option>
             </select>
             <div className="flex gap-1 items-center pl-1 pr-4">
               <Image
