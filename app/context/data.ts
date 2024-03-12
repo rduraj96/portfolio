@@ -11,7 +11,7 @@ export const defaultProgamState = {
   intExplorer: {
     id: "ie",
     name: "Internet Explorer",
-    isOpen: false,
+    isOpen: true,
     isFocused: false,
     isMinimized: false,
     isMaximized: false,
@@ -22,7 +22,7 @@ export const defaultProgamState = {
     name: "Messenger",
     isOpen: true,
     isFocused: false,
-    isMinimized: false,
+    isMinimized: true,
     isMaximized: false,
     zIndex: 0,
   },
@@ -38,8 +38,8 @@ export const defaultProgamState = {
   projects: {
     id: "projects",
     name: "Project Panel",
-    isOpen: false,
-    isFocused: false,
+    isOpen: true,
+    isFocused: true,
     isMinimized: false,
     isMaximized: false,
     zIndex: 0,
