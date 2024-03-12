@@ -39,12 +39,12 @@ const Projects = (props: Props) => {
             alt="background control panel"
             height={325}
             width={325}
-            className="opacity-5 absolute bottom-0 right-0"
+            className="opacity-5 absolute bottom-0 right-0 pointer-events-none"
           />
           <div className="ml-6 mt-7 text-[#d6dff7] text-opacity-95 text-3xl font-bold tracking-wider font-sans">
             Pick a project
           </div>
-          <div className=" w-full mt-5 ml-5 grid grid-cols-2 gap-y-5">
+          <div className=" w-fit mt-5 ml-5 grid grid-cols-2 gap-y-5">
             <ProjectItem
               icon="portfolio"
               title="WinXP Portfolio"

@@ -17,7 +17,7 @@ const ProjectItem = (props: Props) => {
       className="text-white"
     >
       <div
-        className="flex w-fit items-center text-center group cursor-pointer"
+        className="flex w-56 items-center text-center group cursor-pointer"
         tabIndex={-1}
       >
         <Image
