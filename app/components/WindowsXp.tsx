@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Icons from "./Icons/Icons";
 import Projects from "./Programs/MyProjects/Projects";
 import InternetExplorer from "./Programs/InternetExplorer/InternetExplorer";
@@ -8,6 +8,7 @@ import Paint from "./Programs/Paint/Paint";
 import Messenger from "./Programs/Messenger/Messenger";
 import TaskBar from "./Footer/TaskBar";
 import dynamic from "next/dynamic";
+import StartupScreen from "./StartupScreen";
 
 const Winamp = dynamic(() => import("./Programs/Winamp/Winamp"), {
   ssr: false,
@@ -16,11 +17,20 @@ const Winamp = dynamic(() => import("./Programs/Winamp/Winamp"), {
 type Props = {};
 
 const WindowsXp = (props: Props) => {
+  const [show, setShow] = useState(true);
+
   useEffect(() => {
     if (typeof window === undefined) {
       return;
     }
+    setTimeout(() => {
+      setShow(false);
+    }, 3000);
   }, []);
+
+  if (show) {
+    return <StartupScreen />;
+  }
 
   return (
     <main
