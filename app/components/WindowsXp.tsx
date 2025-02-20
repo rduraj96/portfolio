@@ -17,21 +17,6 @@ const Winamp = dynamic(() => import("./Programs/Winamp/Winamp"), {
 type Props = {};
 
 const WindowsXp = (props: Props) => {
-  const [show, setShow] = useState(true);
-
-  useEffect(() => {
-    if (typeof window === undefined) {
-      return;
-    }
-    setTimeout(() => {
-      setShow(false);
-    }, 3000);
-  }, []);
-
-  if (show) {
-    return <StartupScreen />;
-  }
-
   return (
     <main
       className="relative h-full overflow-hidden bg-[url('/wallpapers/background.jpg')] bg-no-repeat bg-cover"
